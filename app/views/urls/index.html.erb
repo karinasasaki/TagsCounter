@@ -1,0 +1,9 @@
+<h1>URLs</h1>
+
+<ul>
+  <% @urls.each do |url| %>
+    <li>
+    <%= link_to url.link, url %>
+    </li>
+  <% end %>
+</ul>

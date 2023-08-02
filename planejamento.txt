@@ -1,0 +1,18 @@
+Objetivo:
+Contabilizar o número de tags em um HTML
+
+Buscar o texto de uma URL informada
+
+Para cada página contar individualmente suas tags
+
+Para cada página armazenar no BD a URL e uma lista de tags
+
+
+Passos:
+1. Definir as tabelas do BD
+2. Criar o projeto inicial no Rails
+3. Criar o serviço de contar as tags de uma URL
+obs: Recebe uma URL e devolve um objeto contendo uma URL e uma lista de tags
+	3.1 Criar um CRUD que tem como input uma URL
+	3.2 Pesquisar como criar uma requisição de uma URL e receber o HTML da página
+	

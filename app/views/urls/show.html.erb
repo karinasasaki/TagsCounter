@@ -1,0 +1,5 @@
+<h1><%= @url.link %></h1>
+<% @url.tags.each do |tag| %>
+  <p>Tag: <%= tag.name %></p>
+  <p>Quantidade: <%= tag.quantity %></p>
+<% end %>
