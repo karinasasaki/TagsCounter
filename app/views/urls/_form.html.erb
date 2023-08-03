@@ -1,6 +1,7 @@
-z<div>
+<%= form_with model: @url do |form| %>
+  <div>
     <%= form.label :link %><br>
-    <%= form.url_field :link, placeholder: "https://..." %>
+    <%= form.text_area :link, placeholder: "https://..." %>
     <% @url.errors.full_messages_for(:link).each do |message| %>
       <div><%= message %></div>
     <% end %>

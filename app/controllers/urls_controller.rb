@@ -14,15 +14,14 @@ class UrlsController < ApplicationController
   end
 
   def create
-    @url = Url.new(url_params)
-
-    if @url.save
-      html = Net::HTTP.get(URI(@url.link))
+    links = url_params[:link].gsub(/[\n|,\s|;]/, " ").split
+    links.each do |link|
+      @url = Url.create(link: "https://#{link}")
+      p html = Net::HTTP.get(URI("https://#{link}"))
       count_tags(html)
-      redirect_to @url
-    else
-      render :new, status: :unprocessable_entity
     end
+    
+    redirect_to root_path
   end
 
   def count_tags(html)
