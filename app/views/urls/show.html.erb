@@ -3,3 +3,6 @@
   <p>Tag: <%= tag.name %></p>
   <p>Quantidade: <%= tag.quantity %></p>
 <% end %>
+
+<%= link_to "Editar", edit_url_path(@url) %>
+<%= link_to "Excluir", url_path(@url), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
