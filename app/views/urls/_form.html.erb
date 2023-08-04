@@ -1,13 +1,13 @@
 <%= form_with model: @url do |form| %>
   <div>
-    <%= form.label :link %><br>
-    <%= form.text_area :link, placeholder: "https://..." %>
+    <%= form.label :link, class: "form-label" %><br>
+    <%= form.text_area :link, placeholder: "https://...", class: "form-control" %>
     <% @url.errors.full_messages_for(:link).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit nil, class: "btn btn-primary" %>
   </div>
 <% end %>

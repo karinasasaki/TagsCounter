@@ -7,6 +7,17 @@ class UrlsController < ApplicationController
 
   def show
     @url = Url.find(params[:id])
+    @ultima_atualizacao = ultima_atualizacao
+  end
+
+  def ultima_atualizacao
+    ultima_atualizacao = @url.tags.first.updated_at
+    @url.tags.each do |tag|
+      if tag.updated_at > ultima_atualizacao
+        ultima_atualizacao = tag.updated_at
+      end
+    end
+    ultima_atualizacao
   end
 
   def new
@@ -16,9 +27,15 @@ class UrlsController < ApplicationController
   def create
     links = url_params[:link].gsub(/[\n|,\s|;]/, " ").split
     links.each do |link|
-      @url = Url.create(link: "https://#{link}")
-      p html = Net::HTTP.get(URI("https://#{link}"))
-      count_tags(html)
+      begin
+        p html = Net::HTTP.get(URI("https://#{link}"))
+        unless html == ""
+          @url = Url.create(link: "https://#{link}")
+          count_tags(html)
+        end
+      rescue Exception => e
+        next
+      end
     end
     
     redirect_to root_path
@@ -33,6 +50,16 @@ class UrlsController < ApplicationController
 
   def edit
     @url = Url.find(params[:id])
+
+    begin
+      html = Net::HTTP.get(URI("https://#{@url.link}"))
+      unless html == ""
+        count_tags(html)
+      end
+    rescue Exception => e
+    end
+
+    redirect_to url_path(@url)
   end
 
   def destroy

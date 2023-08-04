@@ -11,6 +11,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar bg-primary">
+      <%= link_to "Nuti", root_path %>
+    </nav>
+    <div class="content">
+      <%= yield %>
+    </div>
   </body>
 </html>
