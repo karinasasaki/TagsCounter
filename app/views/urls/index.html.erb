@@ -1,11 +1,16 @@
 <h1>URLs</h1>
 
 <ul>
+<% if @urls.length == 0 %>
+  <span>Nenhuma url encontrada</span>
+<% else %>
   <% @urls.each do |url| %>
     <li>
     <%= link_to url.link, url %>
     </li>
   <% end %>
+<% end %>
+ 
 </ul>
 
 <%= link_to "Nova URL", new_url_path, class: "btn btn-primary" %>
