@@ -1,4 +1,4 @@
-# Desafio para a vaga de estágio de desenvolvedor de software no NUTI
+# Teste prático para a vaga de estágio de desenvolvedor de software no NUTI
 
 ## Proposta do projeto
 No código de uma página HTML há diversas tags para apresentar o conteúdo da melhor forma. Para uma análise mais cautelosa, há o interesse de contabilizar a quantidade de cada tag HTML em uma determinada página.
@@ -11,7 +11,7 @@ Sendo assim, é necessário criar um programa para identificar as tags HTML exis
 * Ruby version 3.2.2 [Instalador do Ruby](https://rubyinstaller.org/)
 * PostgreSQL 15.3 [Instalador do PostgreSQL](https://www.postgresql.org/download/windows/)
 * Rails 7.0.6 [Documentação para instalação do Rails](https://guides.rubyonrails.org/getting_started.html)
-
+* Node.js [Instalador do Node.js](https://nodejs.org/en)
 
 ## Instalação e execução
   Após clonar o projeto é necessário garantir que os componentes acima estão instalados, após isso você deve usar alguns comandos para rodar os códigos de criação de banco e levantar o servidor com Rails.
@@ -20,7 +20,7 @@ Sendo assim, é necessário criar um programa para identificar as tags HTML exis
 gem install rails
 ~~~
 
-Com isso o rails estará instalado em sua máquina, após isso é necessário instalar todos os componentes usados na aplicação com o comando abaixo:
+Com isso o rails estará instalado em sua máquina, após isso é necessário instalar as bibliotecas (gem) usadas na aplicação com o comando abaixo:
 ~~~ruby
 bundle install
 ~~~
@@ -43,7 +43,7 @@ rails db:create
 
 ![Criação de banco de dados](https://github.com/karinasasaki/teste-nuti/assets/78616373/3a3066c4-9e05-442b-9673-e984efbd745d)
 
-Com a criação do banco, agora iremos rodar os migrate, responsável pela criação das tabelas no banco (Os códigos também estarão disponíveis na pasta ScriptsSQL nesse projeto).
+Com a criação do banco, agora iremos rodar os migrate, responsável pela criação das tabelas no banco (Os códigos também estarão disponíveis na pasta scripts_sql nesse projeto).
 
 ~~~ruby
 rails db:migrate
@@ -78,7 +78,7 @@ No exemplo acima, nem todos os links irão poder ser encontrados, como no exempl
 
 ![Tela inicial com os link](https://github.com/karinasasaki/teste-nuti/assets/78616373/8f7cb071-ac6a-461b-ba1b-a1d8e3405821)
 
-Voltando para a tela inicial, agora todas as URLs mostradas já estão armazenadas as respectivas tags, entrando no primeiro exemplo do google, irá mostrar uma tabela parecida com a imagem abaixo, indicando as tags, data da ultima atualização e URL
+Voltando para a tela inicial, agora todas as URLs mostradas já estão armazenadas as respectivas tags, entrando no primeiro exemplo do google, irá mostrar uma tabela parecida com a imagem abaixo, indicando as tags e a data da ultima atualização.
 
 ![Tag do google parte 1](https://github.com/karinasasaki/teste-nuti/assets/78616373/aa6bdbdc-f0f5-4964-9739-20f1743289b1)
 ![Tag do google parte 2](https://github.com/karinasasaki/teste-nuti/assets/78616373/b5d76ba7-8432-4a13-ac65-6a0f9f3292ec)
@@ -101,6 +101,19 @@ Na pasta app->Controllers terá a controller *urls_controller.rb* responsável p
 
 #### View
 As Views estão na pasta app->views e são responsáveis pela apresentação visual do sistema para o usuário final, ela onde encontram o html das telas.
+
+
+### DER 
+O DER (Diagrama de entidade e relacionamento) do projeto pode ser encontrado na pasta DER do projeto como na figura abaixo. Nela demonstra as duas tabelas do banco com seu relacionamento 1 pra N.
+
+![DER](https://github.com/karinasasaki/teste-nuti/assets/78616373/39797b9c-3d0f-4f58-9d67-bae9e6e39484)
+
+## Script do SQL
+Caso queira fazer alguma consulta direto pro banco de dados sem o uso do framework e/ou da aplicação, poderá usar os exemplos que deixei na pasta *scripts_sql* como monstra na figura abaixo:
+
+![Scripts_SQL](https://github.com/karinasasaki/teste-nuti/assets/78616373/72235914-dc21-4e5f-96ab-26625e05bc19)
+
+Foram adicionados exemplos de criação do banco, consulta e inserção sobre as tabelas mencionadas.
 
 
 
