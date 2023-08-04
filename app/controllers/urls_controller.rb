@@ -28,10 +28,13 @@ class UrlsController < ApplicationController
     links = url_params[:link].gsub(/[\n|,\s|;]/, " ").split
     links.each do |link|
       begin
-        p html = Net::HTTP.get(URI("https://#{link}"))
-        unless html == ""
+        p response = Net::HTTP.get_response(URI("https://#{link}"))
+        if response.code == "301"
+          response = Net::HTTP.get_response(URI.parse(response['location']))
+        end
+        if response.code == "200"
           @url = Url.create(link: "https://#{link}")
-          count_tags(html)
+          count_tags(response.body)
         end
       rescue Exception => e
         next
@@ -42,7 +45,7 @@ class UrlsController < ApplicationController
   end
 
   def count_tags(html)
-    tags = html.scan(/<([a-z]+)(?=[\s>])(?:[^>=]|='[^']*'|="[^"]*"|=[^'"\s]*)*\s?\/?>/)
+    tags = html.scan(/<([\w]+)(?=[\s>])(?:[^>=]|='[^']*'|="[^"]*"|=[^'"\s]*)*\s?\/?>/)
     tags.uniq.each do |tag|
       Tag.create(name: tag.to_s.gsub(/"|\[|\]/, ""), quantity: tags.count(tag), url: @url)
     end
