@@ -27,11 +27,11 @@ bundle install
 ### Configuração do banco de dados
 Antes de rodar a criação do banco e os migrations da aplicação, é necessário configurar o projeto para fazer a conexão com seu banco de dados. Dentro desse projeto as configurações de banco ficam na pasta '''config -> database.yml'''
 
-![Pasta da configuração de banco](https://github.com/karinasasaki/teste-nuti/assets/78616373/aecf4a15-21e6-4a44-97f2-8bfceb859296)
+![Pasta da configuração de banco](https://github.com/karinasasaki/teste-nuti/assets/78616373/ad108efa-e437-4065-bd60-53bfeebd66f8)
 
 No arquivo database.yml altere as configurações de **username** e **password** para as configurados por você em seu banco de dados (Por padrão ele irá conectar no host Localhost).
 
-![Configurações do banco de dados](https://github.com/karinasasaki/teste-nuti/assets/78616373/eb1b0acf-31df-4b73-b873-ffd2001a6d81)
+![Configurações do banco de dados](https://github.com/karinasasaki/teste-nuti/assets/78616373/ff20e2b5-bb0f-4b08-83f8-346fe9918d24)
 
 ### Criação de banco e rodando as migrations
 
@@ -41,7 +41,7 @@ Após configurar corretamente o banco de dados, poderá usar o comando abaixo no
 rails db:create
 ~~~
 
-![Criação de banco de dados](https://github.com/karinasasaki/teste-nuti/assets/78616373/5cb8b68d-284d-4699-9c83-5a1785b4a2cf)
+![Criação de banco de dados](https://github.com/karinasasaki/teste-nuti/assets/78616373/3a3066c4-9e05-442b-9673-e984efbd745d)
 
 Com a criação do banco, agora iremos rodar os migrate, responsável pela criação das tabelas no banco (Os códigos também estarão disponíveis na pasta ScriptsSQL nesse projeto).
 
@@ -49,7 +49,7 @@ Com a criação do banco, agora iremos rodar os migrate, responsável pela cria�
 rails db:migrate
 ~~~
 
-![Rodando os migrate](https://github.com/karinasasaki/teste-nuti/assets/78616373/dec32294-e292-4d22-9d8a-b3899bf80389)
+![Rodando o Migrate](https://github.com/karinasasaki/teste-nuti/assets/78616373/7fb48f90-20a9-4177-82c0-063713a6ea9b)
 
 ### Executando o projeto
 
@@ -59,28 +59,29 @@ Com tudo configurado, podemos rodar o projeto com o comando abaixo
 rails s
 ~~~
 
-![Rodando o projeto](https://github.com/karinasasaki/teste-nuti/assets/78616373/28ade86e-092e-44f0-891d-181e39eb6643)
+![Rodando o projeto](https://github.com/karinasasaki/teste-nuti/assets/78616373/eb34812d-0b4c-440f-8b63-6ad3b86bea0e)
+
 
 ## Regras de negócio
 
 Na tela inicial, irá listar todas as URLs cadastradas e um botão para adicionar mais.
 
-![Tela inicial](https://github.com/karinasasaki/teste-nuti/assets/78616373/75748be3-7a04-4ad0-bc00-a8ff9d56fe9a)
+![Tela Inicial](https://github.com/karinasasaki/teste-nuti/assets/78616373/0120533e-0385-4e59-864d-0e2a8ba8bb93)
+
 
 Na tela de cadastro de URLs, você poderá cadastrar varios links ao mesmo tempo, ele irá separar os links se ele for escrito com espaço, com vírgula, pulando uma linha ou com ponto e vírgula como demonstrado na imagem abaixo. (Todas elas são possíveis).
 
-![Tela de cadastro](https://github.com/karinasasaki/teste-nuti/assets/78616373/a4cd3bdd-5d99-445f-98b5-892e9cdeb34a)
+![Tela de cadastro de URL](https://github.com/karinasasaki/teste-nuti/assets/78616373/6af91ddb-ad24-4635-afdd-c168e74975aa)
 
-No exemplo acima, nem todos os links irão poder ser encontrados, como no exemplo do ***www.sitequenaoexisteTeste.com.br**, então o sistema apenas **ignora** e cadastra os que ele conseguir buscar. Após o cadastro ele irá redirecionar para a tela inicial e irá listar os links que cadastrou e registrou as tags.
 
-![Tela inicial com todos os links](https://github.com/karinasasaki/teste-nuti/assets/78616373/f4066fa1-199d-46af-bbdb-f1d39dbdb7bb)
+No exemplo acima, nem todos os links irão poder ser encontrados, como no exemplo do ***www.SiteQueNãoExiste.com.br**, então o sistema apenas **ignora** e cadastra os que ele conseguir buscar. Após o cadastro ele irá redirecionar para a tela inicial e irá listar os links que cadastrou e registrou as tags.
 
-*O youtube também não apareceu no exemplo acima pelo fato que ele faz um redirecionamento  para requisição HTTP, o resultado é um 301 Moved Permanently, achei um post no stackOverflow que explica um pouco sobre esses problemas de requisição HTTP [Mensagem 301 HTTP no youtube](https://stackoverflow.com/questions/74646764/always-301-moved-permanently)*
+![Tela inicial com os link](https://github.com/karinasasaki/teste-nuti/assets/78616373/8f7cb071-ac6a-461b-ba1b-a1d8e3405821)
 
 Voltando para a tela inicial, agora todas as URLs mostradas já estão armazenadas as respectivas tags, entrando no primeiro exemplo do google, irá mostrar uma tabela parecida com a imagem abaixo, indicando as tags, data da ultima atualização e URL
 
-![Tag do google parte 1](https://github.com/karinasasaki/teste-nuti/assets/78616373/f1f4421c-cb44-4996-9e22-3e2cd4501ad3)
-![Tag do google parte 2](https://github.com/karinasasaki/teste-nuti/assets/78616373/df5566b9-6ccb-437b-97b6-8c9d043c334a)
+![Tag do google parte 1](https://github.com/karinasasaki/teste-nuti/assets/78616373/aa6bdbdc-f0f5-4964-9739-20f1743289b1)
+![Tag do google parte 2](https://github.com/karinasasaki/teste-nuti/assets/78616373/b5d76ba7-8432-4a13-ac65-6a0f9f3292ec)
 
 
 Nos botões abaixo terá a opção de atualizar e excluir. Caso você atualize, ele irá fazer a mesma requisição novamente e atualizar a quantidade de Tags da URL, e caso exclua ele irá excluir da tabela URL e em cascata na tabela Tags as tags relacionada para aquela URL.
@@ -89,7 +90,7 @@ Nos botões abaixo terá a opção de atualizar e excluir. Caso você atualize, 
 
 O projeto foi desenvolvedo na arquitetura MVC (Model, View, Controller)
 
-![Arquitetura MVC](https://github.com/karinasasaki/teste-nuti/assets/78616373/5e5e960a-eed3-408d-8b4a-2098171eac70)
+![Arquivo MVC](https://github.com/karinasasaki/teste-nuti/assets/78616373/8a14a5a8-d418-4af7-8210-72c1f8c96640)
 
 
 #### Model
