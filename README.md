@@ -79,8 +79,29 @@ No exemplo acima, nem todos os links irão poder ser encontrados, como no exempl
 
 Voltando para a tela inicial, agora todas as URLs mostradas já estão armazenadas as respectivas tags, entrando no primeiro exemplo do google, irá mostrar uma tabela parecida com a imagem abaixo, indicando as tags, data da ultima atualização e URL
 
-![Tags do google parte 1](https://github.com/karinasasaki/teste-nuti/assets/78616373/4cc2dedc-5850-4245-abde-2055179ebe09)
-![Tags do google parte 2](https://github.com/karinasasaki/teste-nuti/assets/78616373/6870b82e-6370-495a-9044-1cf50a5fc980)
+![Tag do google parte 1](https://github.com/karinasasaki/teste-nuti/assets/78616373/f1f4421c-cb44-4996-9e22-3e2cd4501ad3)
+![Tag do google parte 2](https://github.com/karinasasaki/teste-nuti/assets/78616373/df5566b9-6ccb-437b-97b6-8c9d043c334a)
+
 
 Nos botões abaixo terá a opção de atualizar e excluir. Caso você atualize, ele irá fazer a mesma requisição novamente e atualizar a quantidade de Tags da URL, e caso exclua ele irá excluir da tabela URL e em cascata na tabela Tags as tags relacionada para aquela URL.
+
+### Arquitetura do projeto
+
+O projeto foi desenvolvedo na arquitetura MVC (Model, View, Controller)
+
+![Arquitetura MVC](https://github.com/karinasasaki/teste-nuti/assets/78616373/5e5e960a-eed3-408d-8b4a-2098171eac70)
+
+
+#### Model
+As models ficam na pasta App->models e elas são responsáveis por manter o relacionamento entre o objeto e o banco de dados e lidar com validação, associação e transações de informação. *As models criadas para esse projeto são Tag e Url.*
+
+#### Controller
+Na pasta app->Controllers terá a controller *urls_controller.rb* responsável pela criação das rotas para adicionar, remove, atualizar e exibir as Urls e suas tags, além de fazer a requisição HTTP para os links informados pelo usuário e transformar em tags.
+
+#### View
+As Views estão na pasta app->views e são responsáveis pela apresentação visual do sistema para o usuário final, ela onde encontram o html das telas.
+
+
+
+
 
