@@ -12,6 +12,7 @@ class UrlsController < ApplicationController
 
   def ultima_atualizacao
     ultima_atualizacao = @url.tags.first.updated_at
+
     @url.tags.each do |tag|
       if tag.updated_at > ultima_atualizacao
         ultima_atualizacao = tag.updated_at
@@ -27,13 +28,18 @@ class UrlsController < ApplicationController
   def create
     links = url_params[:link].gsub(/[\n|,\s|;]/, " ").split
     links.each do |link|
+      p link
+      unless link.include?("https://" || "http://")
+        p link = "https://#{link}"
+      end
+
       begin
-        p response = Net::HTTP.get_response(URI("https://#{link}"))
+        p response = Net::HTTP.get_response(URI(link))
         if response.code == "301"
           response = Net::HTTP.get_response(URI.parse(response['location']))
         end
         if response.code == "200"
-          @url = Url.create(link: "https://#{link}")
+          @url = Url.create(link: link)
           count_tags(response.body)
         end
       rescue Exception => e
@@ -53,15 +59,17 @@ class UrlsController < ApplicationController
 
   def edit
     @url = Url.find(params[:id])
-
     begin
-      html = Net::HTTP.get(URI("https://#{@url.link}"))
-      unless html == ""
-        count_tags(html)
+      p response = Net::HTTP.get_response(URI("#{@url.link}"))
+      if response.code == "301"
+        response = Net::HTTP.get_response(URI.parse(response['location']))
+      end
+      if response.code == "200"
+        @url.tags.destroy
+        count_tags(response.body)
       end
     rescue Exception => e
     end
-
     redirect_to url_path(@url)
   end
 
