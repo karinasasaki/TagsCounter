@@ -1,31 +1,56 @@
-# Teste prático para a vaga de estágio de desenvolvedor de software no NUTI
+# Tags Counter
 
-## Proposta do projeto
+Teste prático solicitado para a vaga de estágio de desenvolvedor de software no NUTI (Núcleo de Tecnologia da Informação - UFMT).
+
+
+## 💻 Proposta do projeto
+
 No código de uma página HTML há diversas tags para apresentar o conteúdo da melhor forma. Para uma análise mais cautelosa, há o interesse de contabilizar a quantidade de cada tag HTML em uma determinada página.
 
 Sendo assim, é necessário criar um programa para identificar as tags HTML existentes nas páginas que forem carregadas por meio de uma lista de URL informada. Além disso, deve ser contado quantas vezes cada tag aparece em cada página.
 
 É necessário mostrar as informações coletadas para possibilitar verificar os dados da URL informada. Assim, as URL, tags e as respectivas contagens devem ser armazenadas em um banco de dados.
 
-### Componentes usados
-* Ruby version 3.2.2 [Instalador do Ruby](https://rubyinstaller.org/)
-* PostgreSQL 15.3 [Instalador do PostgreSQL](https://www.postgresql.org/download/windows/)
-* Rails 7.0.6 [Documentação para instalação do Rails](https://guides.rubyonrails.org/getting_started.html)
-* Node.js [Instalador do Node.js](https://nodejs.org/en)
 
-## Instalação e execução
-  Após clonar o projeto é necessário garantir que os componentes acima estão instalados, após isso você deve usar alguns comandos para rodar os códigos de criação de banco e levantar o servidor com Rails.
-  Para instalar o Rails basta usar ocomando abaixo no terminal na pasta do projeto:
+### 🚀 Tecnologias utilizadas
+
+* [Ruby 3.2.2 (Instalador)](https://rubyinstaller.org/)
+* [PostgreSQL 15.3 (Instalador)](https://www.postgresql.org/download/windows/)
+* [Rails 7.0.6 (Documentação)](https://guides.rubyonrails.org/getting_started.html)
+* [Node.js (Instalador)](https://nodejs.org/en)
+
+
+## 👩‍💻 Instalação e execução
+
+### 1. Clone este projeto na sua máquina
+
+### 2. Instale as dependências necessárias
+
+Verifique se o Ruby foi instalado corretamente:
+~~~ruby
+ruby -v
+~~~
+
+Para instalar o Rails basta usar ocomando abaixo no terminal da pasta do projeto:
 ~~~ruby
 gem install rails
 ~~~
 
-Com isso o rails estará instalado em sua máquina, após isso é necessário instalar as bibliotecas (gem) usadas na aplicação com o comando abaixo:
+Verifique se todas as dependências foram instaladas corretamente:
+~~~ruby
+rails -v
+psql –version
+node -v
+~~~
+
+Com o Rails instalado em sua máquina, é necessário instalar as bibliotecas (gems) usadas na aplicação com o comando abaixo:
 ~~~ruby
 bundle install
 ~~~
-### Configuração do banco de dados
-Antes de rodar a criação do banco e os migrations da aplicação, é necessário configurar o projeto para fazer a conexão com seu banco de dados. Dentro desse projeto as configurações de banco ficam na pasta '''config -> database.yml'''
+
+### 3. Configuração do banco de dados
+
+Antes de rodar a criação do banco e as migrações da aplicação, é necessário configurar o projeto para fazer a conexão com seu banco de dados. Dentro desse projeto as configurações de banco ficam na pasta 'config/database.yml'
 
 ![Pasta da configuração de banco](https://github.com/karinasasaki/teste-nuti/assets/78616373/ad108efa-e437-4065-bd60-53bfeebd66f8)
 
@@ -62,14 +87,14 @@ rails s
 ![Rodando o projeto](https://github.com/karinasasaki/teste-nuti/assets/78616373/eb34812d-0b4c-440f-8b63-6ad3b86bea0e)
 
 
-## Regras de negócio
+## 🤝 Regras de negócio
 
 Na tela inicial, irá listar todas as URLs cadastradas e um botão para adicionar mais.
 
 ![Tela Inicial](https://github.com/karinasasaki/teste-nuti/assets/78616373/0120533e-0385-4e59-864d-0e2a8ba8bb93)
 
 
-Na tela de cadastro de URLs, você poderá cadastrar varios links ao mesmo tempo, ele irá separar os links se ele for escrito com espaço, com vírgula, pulando uma linha ou com ponto e vírgula como demonstrado na imagem abaixo. (Todas elas são possíveis).
+Na tela de cadastro de URLs, você poderá cadastrar vários links ao mesmo tempo, ele irá separar os links se ele for escrito com espaço, com vírgula, pulando uma linha ou com ponto e vírgula como demonstrado na imagem abaixo. (Todas elas são possíveis).
 
 ![Tela de cadastro de URL](https://github.com/karinasasaki/teste-nuti/assets/78616373/6af91ddb-ad24-4635-afdd-c168e74975aa)
 
